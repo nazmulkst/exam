@@ -1,0 +1,90 @@
+<?php
+
+    $categories = $block->getChildCategory();
+    if (count($categories) > 0) {
+        ?>
+        <div class="special-category block ">
+            <div class="container"> 
+                <h2 class="block-title title"><?= $block->escapeHtml('Popular Category / Promo Block'); ?></h2>
+                <div class="block-content content">
+                    <div class="category-list">
+                        <ul class="category-items">
+                            <?php
+                                foreach ($categories as $_item):
+                                    if ($_item->getIsActive() != 1)
+                                        continue;
+                                ?>
+                                <li class="call">
+                                    <div class="item category" id="category-item_<?= /* @noEscape */ $_item->getId() ?>">
+                                    <?php
+                                        $category = $block->getCategory($_item->getId());
+                                        $_outputhelper    = $this->helper('Magento\Catalog\Helper\Output');
+                                        $_imgHtml   = '';
+                                        if ($_imgUrl = $category->getImageUrl()) {
+                                      
+                                         $_imgHtml = '<a class="category photo category-item-photo" href="'. $_item->getRequestPath() .'" title="'.$_item->getName() .'"><img src="' . $_imgUrl . '" /></a>';
+                                         $_imgHtml = $_outputhelper->categoryAttribute($category, $_imgHtml, 'image');
+                                         echo $_imgHtml;
+                                      
+                                        }
+                                    ?>
+                                        <div class="category-description">
+                                            <?= $category->getDescription(); ?>
+                                        </div>                  
+                                        <strong class="category-name">
+                                            <a class="category-item-link" title="<?= $block->escapeHtmlAttr($_item->getName()) ?>" href="<?= $_item->getRequestPath() ?>">
+                                                <?= $block->escapeHtml($_item->getName()) ?>
+                                            </a>
+                                        </strong>
+                                    </div>
+                            </li>
+        <?php endforeach ?>
+                            </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <?php } ?>
+
+<?php
+ $featuredProductCollection = $block->getFeaturedProductCollection();
+    $imgWidth = 154;
+    $imgHeight = 135;
+    if (count($featuredProductCollection) > 0) {
+        ?>
+        <div class="special-product block ">
+            <div class="container"> 
+                <h2 class="block-title title"><?= $block->escapeHtml('Feature Products'); ?></h2>
+                <div class="block-content content">
+                    <div class="products wrapper list products-list">
+                        <ul class="products list items product-items">
+                            <?php
+                            foreach ($featuredProductCollection as $_item) :
+                                $_item->load($_item->getId());
+                                ?>
+                                <li class="call">
+                                    <div class="item product product-item" id="product-item_<?= /* @noEscape */ $_item->getId() ?>" data-shuffle-group="<?= $block->escapeHtmlAttr($_item->getPriority()) ?>">
+
+                                        <a class="product photo product-item-photo" href="<?php echo $_item->getProductUrl() ?>" title="<?php echo $_item->getName(); ?>">
+                                            <img src="<?php echo $block->getProductImageUrl($_item, $imgWidth, $imgHeight); ?>" alt="" width="<?= $imgWidth ?>" height="<?= $imgHeight ?>">
+                                        </a>
+                                        <strong class="product name product-item-name">
+                                            <a class="product-item-link" title="<?= $block->escapeHtmlAttr($_item->getName()) ?>" href="<?= $_item->getProductUrl() ?>">
+                                                <?= $block->escapeHtml($_item->getName()) ?>
+                                            </a>
+                                        </strong>
+                                        <div class="price-details"> 
+                                            <?= /* @noEscape */ $block->getCurrencyFormat($_item->getFinalPrice(), true, 2); ?>
+                                            <a class="action primary " href="<?= $_item->getProductUrl() ?>"><?= __('View Details'); ?></a>
+                                        </div>
+                                    </div>
+                                </li>
+                                <?php endforeach ?>
+                            </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <?php } ?>

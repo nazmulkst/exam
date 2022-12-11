@@ -1,0 +1,22 @@
+﻿<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">    
+    <body>
+        <referenceBlock name="page.main.title" remove="true" />
+        <referenceBlock name="main.content" remove="true" />
+        <!-- <referenceBlock name="cms_page" remove="true" /> -->
+        <referenceContainer name="page.wrapper">
+	        <container name="home_banner" label="Home Banner" htmlTag="div" htmlClass="home-banner" htmlId="home-banner" before="main.content">
+                <!-- <block class="Magento\Cms\Block\Block" name="home_static_banner" before="-">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">home_static_banner</argument>
+                    </arguments>
+                </block> -->
+                <block name="home_static_banner" class="Magento\Framework\View\Element\Template" template="Magento_Cms::banner.phtml" before="-"/>
+	        </container>
+
+            <block name="home-feature" class="Exam\Feature\Block\Feature" template="Magento_Cms::feature.phtml"/>
+            
+	    </referenceContainer>
+    </body>
+</page>

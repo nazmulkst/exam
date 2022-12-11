@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Exam_News::news_blog" title="News" module="Exam_News" sortOrder="15" resource="Exam_News::news_blog"/>
+        <add id="Exam_News::news_category" title="News Categories" translate="title" module="Exam_News" sortOrder="0" parent="Exam_News::news_blog" action="news_blog/category" resource="Exam_News::category"/>
+        <add id="Exam_News::news_post" title="News Posts" translate="title" module="Exam_News" sortOrder="30" parent="Exam_News::news_blog" action="news_blog/post" resource="Exam_News::post"/>
+        <add id="Exam_News::news_author" title="News Authors" translate="title" module="Exam_News" sortOrder="40" parent="Exam_News::news_blog" action="news_blog/author" resource="Exam_News::author"/>
+        <add id="Exam_News::news_tag" title="News Tags" translate="title" module="Exam_News" sortOrder="50" parent="Exam_News::news_blog" action="news_blog/tag" resource="Exam_News::tag"/>
+        <add id="Exam_News::news_blog_configuration" title="Configuration" translate="title" module="Exam_News" sortOrder="50" parent="Exam_News::news_blog" action="adminhtml/system_config/edit/section/blog_setting" resource="Exam_News::news_blog_configuration"/>
+    </menu>
+</config>

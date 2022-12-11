@@ -1,0 +1,149 @@
+//  Common
+//  _____________________________________________
+
+& when (@media-common =true) {
+    // Shop by vehicle cms page
+    .special-category {
+            padding-bottom: 30px;
+            max-width: 1280px;
+            margin-left: auto;
+            margin-right: auto;
+            .block-title {
+                margin-bottom: 30px;
+            }
+        ul.category-items {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+
+            li.call {
+                width: calc((100% - 4%) / 3);
+                float: left;
+                padding-left: 2%;
+                position: relative;
+                &:nth-child(3n + 1){
+                    padding-left: 0;
+                }
+                .item.category {
+                    display: inline-block;
+                    width: 100%;
+                    box-shadow: 3px 3px 6px 0px #999;
+                    min-height: 200px;
+                    .category-item-photo {
+                        display: inline-block;
+                        justify-content: center;
+                        align-items: center;
+                        padding: 10px;
+                        max-width: 100%;
+                        padding-top: 30px;
+                    }
+                    .category-name {
+                        text-align: center;
+                        display: block;
+                        a {
+                            text-transform: uppercase;
+                            font-size: 18px;
+                            color: #b11e22;
+                        }
+                    }
+                    .category-description {
+                        color: #f00;
+                        font-weight: 700;
+                        text-align: center;
+                    }
+                }
+            }    
+        }
+
+    }
+    .home-banner {
+        display: block;
+        margin: 0 auto;
+        padding: 0 15px 15px 15px;
+        clear: both;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        .hbaner {
+            text-align: center;
+        }
+    }
+    .special-product {
+        padding-bottom: 50px;
+        background: #e8e8e8;
+        width: 100%;
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 20px;
+            padding-bottom: 40px;
+
+            ul.product-items {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                li {
+                    width: calc((100% - 6%) / 4);
+                    float: left;
+                    position: relative;
+                    padding-left: 2%;
+
+                    &:nth-child(4n + 1){
+                        padding-left: 0;
+                    }
+                    .product-item {
+                        display: table;
+                        width: 100%;
+                        display: inline-block;
+                        background: #fff;
+                        border-radius: 5px;
+                        box-shadow: 3px 3px 6px 0px #ddd;
+                        width: 100%;
+                        transition: 0.3s;
+                        padding-bottom: 30px;
+                        .product-item-photo, .product-item-name, .price-details {
+                            text-align: center;
+                        }
+                        .product-item-photo {
+                            padding: 0;
+                        }
+                        .price-details {
+                            display: flex;
+                            padding: 20px;
+                            justify-content: space-between;
+                            flex-wrap: wrap;
+                            align-items: center;
+                            .price {
+                                font-weight: 700;
+                                font-size: 15px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    
+    }
+}
+
+//  Mobile
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s){
+    .home-banner {
+        display: block;
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m){
+    .home-banner {
+        display: block;
+    }
+}
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__xs){
+    .home-banner {
+        display: block;
+    }
+}
